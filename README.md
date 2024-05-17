@@ -8,6 +8,7 @@ TMT Common Software ([CSW](https://github.com/tmtsoftware/csw)) APIs.
 * aps-computationassembly - an assembly that talks to the computation HCD
 * aps-computationhcd - an HCD that talks to the computation hardware
 * aps-computationdeploy - for starting/deploying HCDs and assemblies
+* aps-computationclient - for sending commands to the assembly for test purposes
 
 ## Upgrading CSW Version
 
@@ -34,18 +35,19 @@ The CSW services need to be running before starting the components.
 
 Note: while running the csw-services use the csw version from `project/build.properties`
 
-## Running the HCD and Assembly
+## Running the HCD,Assembly and Client App
 
 Run the container cmd script with arguments. For example:
 
-* Run the HCD in a standalone mode with a local config file (The standalone config format is different than the container format):
 
-```
-sbt "aps-computationdeploy/runMain aps.computationdeploy.ComputationContainerCmdApp --local ./src/main/resources/ComputationhcdStandalone.conf"
-```
 
-* Start the HCD and assembly in a container using the Java implementations:
+* Start the HCD and assembly in a container using the Scala implementations:
 
 ```
 sbt "aps-computationdeploy/runMain aps.computationdeploy.ComputationContainerCmdApp --local ./src/main/resources/JComputationContainer.conf"
+```
+* Run the client app
+
+```
+sbt "aps-computationclient/run"
 ```
